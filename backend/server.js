@@ -70,7 +70,6 @@ app.post("/api/complete-focus", (req, res) => {
   const db = readDb();
   db.rewards.push({
     reward,              // "banana" | "orange" | "strawberry"
-    focusMinutes,        // 30 | 45 | 60
     earnedAt: Date.now() // timestamp for ordering
   });
   writeDb(db);
