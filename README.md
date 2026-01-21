@@ -47,7 +47,7 @@ npm install
 ### Step 4: Start the server
 
 ```bash
-node server.js
+npm start
 ```
 
 You should see:
