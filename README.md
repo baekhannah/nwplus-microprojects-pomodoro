@@ -53,7 +53,7 @@ node server.js
 You should see:
 
 ```
-Server running on http://localhost:3000
+Server running on http://localhost:8000
 ```
 
 ---
@@ -63,7 +63,7 @@ Server running on http://localhost:3000
 Open your browser and go to:
 
 ```
-http://localhost:3000
+http://localhost:8000
 ```
 
 If you see a confirmation message, the backend is running
