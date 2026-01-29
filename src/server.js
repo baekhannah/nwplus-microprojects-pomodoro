@@ -44,7 +44,7 @@ app.get("/", (req, res) => {
 // Reward mapping helper
 function rewardForFocusMinutes(minutes) {
   const map = {
-    30: "banana",
+    30: "mango",
     45: "orange",
     60: "strawberry",
   };
