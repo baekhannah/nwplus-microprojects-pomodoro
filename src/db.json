@@ -1,4 +1,9 @@
 {
-  "rewards": [], 
+  "rewards": [
+    {
+      "reward": "orange",
+      "earnedAt": 1769661657751
+    }
+  ],
   "focusedTime": 0
 }

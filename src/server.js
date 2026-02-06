@@ -1,26 +1,18 @@
-const express = require("express");
 const fs = require("node:fs");
 const path = require("node:path");
+const express = require("express");
+const cors = require("cors");
 
 const app = express();
 const PORT = 8000;
 
+// CORS middleware to allow frontend to access backend
+app.use(cors());
 app.use(express.json());
-
-// BROWSER PERMISSION FIX! DONT REMOVE PLS
-// If your frontend is opened directly (file://) or from a different port,
-// this prevents CORS errors in beginner setups.
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
-  if (req.method === "OPTIONS") return res.sendStatus(200);
-  next();
-});
 
 // ========================================================================================================
 //This turns a JSON file into a tiny database :)
-//for persistence: we use a plain file db.json, read it into memory, modify it, write it back 
+//for persistence: we use a plain file db.json, read it into memory, modify it, write it back
 
 const DB_PATH = path.join(__dirname, "db.json");
 
@@ -30,7 +22,7 @@ function readDb() {
   return JSON.parse(raw);
 }
 
-//first converts JS object to JSON string, then overwrites db.json. 
+//first converts JS object to JSON string, then overwrites db.json.
 function writeDb(db) {
   fs.writeFileSync(DB_PATH, JSON.stringify(db, null, 2), "utf-8");
 }
@@ -69,8 +61,8 @@ app.post("/api/complete-focus", (req, res) => {
 
   const db = readDb();
   db.rewards.push({
-    reward,              // "banana" | "orange" | "strawberry"
-    earnedAt: Date.now() // timestamp for ordering
+    reward, // "banana" | "orange" | "strawberry"
+    earnedAt: Date.now(), // timestamp for ordering
   });
   writeDb(db);
 
