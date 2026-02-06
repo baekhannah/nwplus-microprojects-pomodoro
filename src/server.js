@@ -35,33 +35,13 @@ app.get("/", (req, res) => {
 
 // Reward mapping helper
 function rewardForFocusMinutes(minutes) {
-  const map = {
-    30: "mango",
-    45: "orange",
-    60: "strawberry",
-  };
-  return map[minutes] || null;
+  // stub
 }
 
 // ========================================================================================================
 // ENDPOINT: Complete a focus session → earn reward
 app.post("/api/focus-sessions", (req, res) => {
-  const { focusMinutes } = req.body || {};
-
-  if (typeof focusMinutes !== "number") {
-    return res.status(400).json({ error: "Expected { focusMinutes: number }" });
-  }
-
-  const reward = rewardForFocusMinutes(focusMinutes);
-
-  const db = readDb();
-  db.rewards.push({
-    reward, // "mango" | "orange" | "strawberry"
-    earnedAt: Date.now(), // timestamp for ordering
-  });
-  writeDb(db);
-
-  res.json({ reward });
+  // ***************************************** TO IMPLEMENT ***********************************************
 });
 
 // ========================================================================================================
