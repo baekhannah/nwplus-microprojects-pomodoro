@@ -53,15 +53,10 @@ app.post("/api/focus-sessions", (req, res) => {
   }
 
   const reward = rewardForFocusMinutes(focusMinutes);
-  if (!reward) {
-    return res.status(400).json({
-      error: "Invalid focusMinutes. Use 30, 45, or 60.",
-    });
-  }
 
   const db = readDb();
   db.rewards.push({
-    reward, // "banana" | "orange" | "strawberry"
+    reward, // "mango" | "orange" | "strawberry"
     earnedAt: Date.now(), // timestamp for ordering
   });
   writeDb(db);
