@@ -45,7 +45,7 @@ function rewardForFocusMinutes(minutes) {
 
 // ========================================================================================================
 // ENDPOINT: Complete a focus session → earn reward
-app.post("/api/complete-focus", (req, res) => {
+app.post("/api/focus-sessions", (req, res) => {
   const { focusMinutes } = req.body || {};
 
   if (typeof focusMinutes !== "number") {
@@ -71,7 +71,7 @@ app.post("/api/complete-focus", (req, res) => {
 
 // ========================================================================================================
 // ENDPOINT: View your gallery of rewards
-app.get("/api/gallery", (req, res) => {
+app.get("/api/rewards", (req, res) => {
   const db = readDb();
   res.json({ rewards: db.rewards });
 });
